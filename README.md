@@ -47,8 +47,8 @@ And these data files:
 Run these command lines:
 
 ```
-jwplot jw.cfg jw.eps j.data w.data
-convert jw.eps jw.png```
+$ jwplot jw.cfg jw.eps j.data w.data
+$ convert jw.eps jw.png```
 
 Get this output:
 
