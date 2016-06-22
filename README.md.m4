@@ -16,19 +16,23 @@ m4_changequote()
 
 ## Example
 
-1. Consider this JWPlot configuration file (Java properties format):
+Consider this JWPlot configuration file (Java properties format):
 
 fexample(examples/lines/jw.cfg)
 
-2. And these data files:
+And these data files:
 
 fexample(examples/lines/j.data)
 
 fexample(examples/lines/w.data)
 
-3. Run this command line:
+Run these command lines:
 
-4. Get this output:
+md_code()
+$ jwplot jw.cfg jw.eps j.data w.data
+$ convert jw.eps jw.png`'md_code()
+
+Get this output:
 
 ![jw.png](examples/lines/jw.png)
 

@@ -13,7 +13,7 @@ the shell
 
 ## Example
 
-1. Consider this JWPlot configuration file (Java properties format):
+Consider this JWPlot configuration file (Java properties format):
 
 *examples/lines/jw.cfg*
 ```
@@ -25,7 +25,7 @@ label.j.data = J
 label.w.data = W
 ```
 
-2. And these data files:
+And these data files:
 
 *examples/lines/j.data*
 ```
@@ -44,9 +44,13 @@ label.w.data = W
 9 8
 ```
 
-3. Run this command line:
+Run these command lines:
 
-4. Get this output:
+```
+jwplot jw.cfg jw.eps j.data w.data
+convert jw.eps jw.png```
+
+Get this output:
 
 ![jw.png](examples/lines/jw.png)
 
