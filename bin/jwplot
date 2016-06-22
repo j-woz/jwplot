@@ -1,0 +1,42 @@
+#!/bin/zsh
+
+# JWPLOT
+
+zparseopts -D -E h=H
+
+# Respond to -h
+if (( ${#H} ))
+then
+  print "usage:"
+  print "\t jwplot <OPTIONS>* <CFG> <EPS> <DATA>*"
+  return
+fi
+
+# Find myself
+JWPLOT_BIN=$( cd $( dirname $0 ) ; /bin/pwd )
+JWPLOT_HOME=$( cd ${JWPLOT_BIN}/.. ; /bin/pwd )
+
+# Set up CLASSPATH
+source ${JWPLOT_HOME}/scripts/classpath.zsh
+if [[ $? != 0 ]]
+then
+  print "Could not build CLASSPATH!"
+  return 1
+fi
+
+# Enable JDWP
+if [[ ${JWPLOT_DEBUG} != "" ]]
+then
+  DEBUG="-agentlib:jdwp=transport=dt_socket,server=y,address=${JWPLOT_DEBUG}"
+fi
+
+# Check for JAR
+JAR=${JWPLOT_HOME}/lib/jwplot.jar
+if [[ ! -f ${JAR} ]]
+then
+  print "jwplot: JAR file not found!"
+  return 1
+fi
+
+# Run Java
+java -ea ${DEBUG} -cp ${JAR}:${CP} jwplot.Main ${*}

@@ -1,0 +1,5 @@
+
+To run:
+
+../../swift_plotter.zsh -s plot.cfg tmp.eps set*.data
+

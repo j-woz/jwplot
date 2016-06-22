@@ -1,0 +1,47 @@
+
+<!-- JWPlot -->
+
+<project name="jwplot"
+	 default="jar">
+
+  <fileset id="jars"
+           dir="lib"
+           includes="*.jar" />
+  <pathconvert refid="jars" property="jars" />
+  <property name="classpath" value="./src:${jars}" />
+
+  <target name="all"
+          depends="compile" />
+
+  <target name="compile"
+          depends="make_build_dir">
+
+    <javac includeAntRuntime="no"
+           srcdir="src"
+           destdir="build"
+           classpath="${classpath}"
+           listfiles="${lf}"
+           debug="true"
+           debuglevel="source,lines,vars">
+      <compilerarg value="-Xlint"/>
+    </javac>
+  </target>
+
+  <target name="make_build_dir">
+    <mkdir dir="build"/>
+  </target>
+
+  <target name="jar" depends="compile">
+    <jar destfile="lib/jwplot.jar"
+         basedir="build"
+         manifest="etc/manifest" />
+  </target>
+
+  <target name="clean">
+    <delete>
+      <fileset dir="build/jwplot" includes="**/*.class"/>
+    </delete>
+    <delete file="lib/jwplot.jar" />
+    <!-- <delete file="build/Fig.class" /> -->
+  </target>
+</project>
