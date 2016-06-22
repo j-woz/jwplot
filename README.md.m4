@@ -6,37 +6,22 @@ the shell
 * [User guide](https://jmwozniak.github.io/jwplot)
 
 
-
+m4_define(`md_code', m4_changequote([,
+])[m4_changequote([,])```m4_changequote(`,')]m4_changequote(`,'))
 
 ## Example
 
 1. Consider this JWPlot configuration file (Java properties format):
 
-``` 
-title = JWPlot
-xlabel = ecks
-ylabel = why
+md_code() m4_dnl
+m4_include(examples/lines/jw.cfg)
+md_code() m4_dnl
 
-label.j.data = J
-label.w.data = W
-
-``` 
 2. And these data files:
 
+m4_include(examples/lines/j.data)
 
--6 4
--5.999 1
--1 1
--0.999 8
-
-
-
-1 8
-3 1
-5 4
-7 1
-9 8
-
+m4_include(examples/lines/w.data)
 
 3. Run this command line:
 
@@ -44,3 +29,6 @@ label.w.data = W
 
 ![jw.png](examples/lines/jw.png)
 
+m4_dnl Local Variables:
+m4_dnl mode: Fundamental
+m4_dnl End:
