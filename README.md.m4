@@ -30,7 +30,8 @@ Run these command lines:
 
 md_code()
 $ jwplot jw.cfg jw.eps j.data w.data
-$ convert jw.eps jw.png`'md_code()
+$ convert jw.eps jw.png
+md_code()
 
 Get this output:
 

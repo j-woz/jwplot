@@ -48,7 +48,8 @@ Run these command lines:
 
 ```
 $ jwplot jw.cfg jw.eps j.data w.data
-$ convert jw.eps jw.png```
+$ convert jw.eps jw.png
+```
 
 Get this output:
 
