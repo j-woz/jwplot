@@ -5,23 +5,26 @@ the shell
 
 * [User guide](https://jmwozniak.github.io/jwplot)
 
+m4_dnl Example from file:
+m4_define(`fexample', `*$1*
+md_code()m4_include($1)md_code()')
 
 m4_define(`md_code', m4_changequote([,
 ])[m4_changequote([,])```m4_changequote(`,')]m4_changequote(`,'))
+
+m4_changequote()
 
 ## Example
 
 1. Consider this JWPlot configuration file (Java properties format):
 
-md_code() m4_dnl
-m4_include(examples/lines/jw.cfg)
-md_code() m4_dnl
+fexample(examples/lines/jw.cfg)
 
 2. And these data files:
 
-m4_include(examples/lines/j.data)
+fexample(examples/lines/j.data)
 
-m4_include(examples/lines/w.data)
+fexample(examples/lines/w.data)
 
 3. Run this command line:
 
