@@ -113,7 +113,8 @@ note.0 2.5 4.5 This is my text label.
 
 EPS files were chosen because of the ease of using them in LaTeX
 documents and the relative ease of producing other high-quality
-images from them via ImageMagick:
+images from them via
+http://www.imagemagick.org/script/convert.php[ImageMagick]:
 
 ----
 convert my_output.eps my_output.png
