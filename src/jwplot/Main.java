@@ -1,8 +1,9 @@
 
 package jwplot;
 
-import java.util.ArrayList;
-import java.util.List;
+import static jwplot.Util.verbose;
+
+import java.util.*;
 
 import gnu.getopt.Getopt;
 
@@ -12,17 +13,18 @@ public class Main
   {
     Bits.init();
     Util.verbose(false);
-    
+
+    Map<String,String> cmdProps = new HashMap<>();
     List<String> files = new ArrayList<>();
-    char mode = processArgv(argv, files);
+    char mode = processArgv(argv, cmdProps, files);
     try
     {
       switch (mode)
       {
-        case 's': 
+        case 's':
         {
           Lines l = new Lines();
-          l.plotter(files);
+          l.plotter(cmdProps, files);
           break;
         }
         case 'd':
@@ -46,12 +48,14 @@ public class Main
       System.exit(1);
     }
   }
-  
-  /**  
-     Returns mode character and fills in List files 
+
+  /**
+     Returns mode character and fills in List files
    * @return
    */
-  static char processArgv(String[] argv, List<String> files)
+  static char processArgv(String[] argv,
+                          Map<String,String> cmdProps,
+                          List<String> files)
   {
     char mode = 's';
     Getopt g = new Getopt("jwplot", argv, "bdsv");
@@ -75,7 +79,7 @@ public class Main
           mode = 'b';
           break;
         }
-        case 'v': 
+        case 'v':
         {
           Util.verbose(true);
           break;
@@ -88,8 +92,19 @@ public class Main
       }
     }
     for (int i = g.getOptind(); i < argv.length ; i++)
-      files.add(argv[i]);
+    {
+      String arg = argv[i];
+      if (arg.contains("=")) mapAdd(cmdProps, arg);
+      else                   files.add(arg);
+    }
     return mode;
+  }
+
+  static void mapAdd(Map<String,String> cmdProps, String arg)
+  {
+    String[] tokens = arg.split("=");
+    verbose("command line property: " + tokens[0] + "=" + tokens[1]);
+    cmdProps.put(tokens[0], tokens[1]);
   }
 
   public static void usage()

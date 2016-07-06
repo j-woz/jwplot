@@ -12,6 +12,7 @@ import java.awt.geom.Rectangle2D;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
@@ -73,7 +74,7 @@ public class Lines
        Data files are two-columns of numbers each -
        see LineReader.read() and LineReader.array()
    */
-  public void plotter(List<String> files)
+  public void plotter(Map<String,String> cmdProps, List<String> files)
   throws UserInputException
   {
     String propFile = files.get(0);
@@ -87,6 +88,7 @@ public class Lines
 
     properties = new Properties();
     load(propFile);
+    properties.putAll(cmdProps);
 
     scanProperties();
 
