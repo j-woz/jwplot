@@ -13,7 +13,7 @@ public class Main
     Bits.init();
     Util.verbose(false);
     
-    List<String> files = new ArrayList<>();
+    List<String> files = new ArrayList<String>();
     char mode = processArgv(argv, files);
     try
     {
