@@ -76,6 +76,9 @@ public class Lines
   public void plotter(List<String> files)
   throws UserInputException
   {
+    if (files.size() < 2)
+      throw new UserInputException
+        ("Insufficient command line arguments!");
     String propFile = files.get(0);
     String output = files.get(1);
     List<String> names = new ArrayList<String>();
