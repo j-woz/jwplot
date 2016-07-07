@@ -30,13 +30,12 @@ then
   DEBUG="-agentlib:jdwp=transport=dt_socket,server=y,address=${JWPLOT_DEBUG}"
 fi
 
-# Check for JAR
 JAR=${JWPLOT_HOME}/lib/jwplot.jar
 if [[ ! -f ${JAR} ]]
 then
-  print "jwplot: JAR file not found!"
+  print "jwplot: JAR file not found- did you compile JWPlot?"
   return 1
 fi
 
 # Run Java
-java -ea ${DEBUG} -cp ${JAR}:${CP} jwplot.Main ${*}
+java -ea ${DEBUG} -cp ${CP} jwplot.Main ${*}
