@@ -17,6 +17,7 @@ public class Main
     Map<String,String> cmdProps = new HashMap<>();
     List<String> files = new ArrayList<>();
     char mode = processArgv(argv, cmdProps, files);
+
     try
     {
       switch (mode)

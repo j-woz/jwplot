@@ -6,10 +6,10 @@
 if [[ $( uname ) == CYGWIN* ]]
 then
     typeset -T CP cp ";"
-    cp+=c:/cygwin${JWPLOT_HOME}/src
+    cp+=c:/cygwin64${JWPLOT_HOME}/src
     for jar in ${JWPLOT_HOME}/lib/*.jar
     do
-      cp+=c:/cygwin${jar}
+      cp+=c:/cygwin64${jar}
     done
 else
     typeset -T CP cp

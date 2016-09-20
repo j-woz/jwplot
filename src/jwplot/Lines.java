@@ -3,6 +3,7 @@ package jwplot;
 
 import static jwplot.Util.matches;
 import static jwplot.Util.verbose;
+import static jwplot.Util.assignProperty;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -77,6 +78,9 @@ public class Lines
   public void plotter(Map<String,String> cmdProps, List<String> files)
   throws UserInputException
   {
+    if (files.size() < 2)
+      throw new UserInputException
+        ("Insufficient command line arguments!");
     String propFile = files.get(0);
     String output = files.get(1);
     List<String> names = new ArrayList<String>();
@@ -399,17 +403,15 @@ public class Lines
        axis.x, axis.y (normal/logarithmic, default normal)
    */
   static void scanProperties()
+  throws UserInputException
   {
     String tmp;
     title = properties.getProperty("title");
     xlabel = properties.getProperty("xlabel");
     ylabel = properties.getProperty("ylabel");
-    tmp = properties.getProperty("width");
-    if (tmp != null)
-      width = Integer.parseInt(tmp.trim());
-    tmp = properties.getProperty("height");
-    if (tmp != null)
-      height = Integer.parseInt(tmp.trim());
+    width = assignProperty(properties, "width", width);
+    height = assignProperty(properties, "height", height);
+    xmin = assignProperty(properties, "xmin", xmin)
     tmp = properties.getProperty("xmin");
     if (tmp != null)
       xmin = Double.parseDouble(tmp);
