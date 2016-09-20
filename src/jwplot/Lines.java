@@ -401,25 +401,24 @@ public class Lines
   static void scanProperties()
   throws UserInputException
   {
-    title  = properties.assign("title", title);
+    title  = properties.assign("title",  title);
     xlabel = properties.assign("xlabel", xlabel);
     ylabel = properties.assign("ylabel", ylabel);
-    width  = properties.assign("width", width);
+    width  = properties.assign("width",  width);
     height = properties.assign("height", height);
-    xmin   = properties.assign("xmin", xmin);
-    xmax   = properties.assign("xmax", xmax);
-    ymin   = properties.assign("ymin", ymin);
-    ymax   = properties.assign("ymax", ymax);
+    xmin   = properties.assign("xmin",   xmin);
+    xmax   = properties.assign("xmax",   xmax);
+    ymin   = properties.assign("ymin",   ymin);
+    ymax   = properties.assign("ymax",   ymax);
 
     bw = properties.assign("bw", bw);
-    legendEnabled = properties.assign("legend.enabled", legendEnabled);
+    legendEnabled  = properties.assign("legend.enabled",  legendEnabled);
     legendPosition = properties.assign("legend.position", legendPosition);
 
     axis_x_type = properties.assign("axis.x", axis_x_type);
     axis_y_type = properties.assign("axis.y", axis_y_type);
 
-    String tmp = properties.getProperty("notes");
-    if (tmp != null)
+    if (properties.getProperty("notes") != null)
       loadNotes();
   }
 

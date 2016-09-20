@@ -43,16 +43,15 @@ extends java.util.Properties
   throws UserInputException
   {
     String t = text.trim();
+
     for (String v : trues)
-    {
       if (v.equals(t))
         return true;
-    }
     for (String v : falses)
-    {
       if (v.equals(t))
         return false;
-    }
+
+    // Nothing matched: user input was invalid
     throw new UserInputException
     ("Could not parse property as boolean: " +
         "\""+ propName +"\"=\"" +text+"\"");
