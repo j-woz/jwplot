@@ -3,18 +3,13 @@ package jwplot;
 
 import static jwplot.Util.matches;
 import static jwplot.Util.verbose;
-import static jwplot.Util.assignProperty;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.xmlgraphics.java2d.GraphicContext;
@@ -41,7 +36,7 @@ import org.jfree.ui.RectangleEdge;
  * */
 public class Lines
 {
-  static Properties properties;
+  static CheckedProperties properties;
 
   static String title = null;
   static String xlabel = "x";
@@ -63,7 +58,7 @@ public class Lines
   static Double ymax = null;
 
   static boolean legendEnabled = true;
-  static String legendPosition = null;
+  static String legendPosition = "bottom";
 
   static List<XYTextAnnotation> notes =
       new ArrayList<XYTextAnnotation>();
@@ -90,7 +85,7 @@ public class Lines
     List<double[][]> data = new ArrayList<double[][]>();
     List<String> labels = new ArrayList<String>();
 
-    properties = new Properties();
+    properties = new CheckedProperties();
     load(propFile);
     properties.putAll(cmdProps);
 
@@ -401,47 +396,29 @@ public class Lines
        bw (Black and white, true/false, default false)
        legend.enabled (true/false, default true)
        axis.x, axis.y (normal/logarithmic, default normal)
+       notes: see loadNotes()
    */
   static void scanProperties()
   throws UserInputException
   {
-    String tmp;
-    title = properties.getProperty("title");
-    xlabel = properties.getProperty("xlabel");
-    ylabel = properties.getProperty("ylabel");
-    width = assignProperty(properties, "width", width);
-    height = assignProperty(properties, "height", height);
-    xmin = assignProperty(properties, "xmin", xmin)
-    tmp = properties.getProperty("xmin");
-    if (tmp != null)
-      xmin = Double.parseDouble(tmp);
-    tmp = properties.getProperty("xmax");
-    if (tmp != null)
-      xmax = Double.parseDouble(tmp);
-    tmp = properties.getProperty("ymin");
-    if (tmp != null)
-      ymin = Double.parseDouble(tmp);
-    tmp = properties.getProperty("ymax");
-    if (tmp != null)
-      ymax = Double.parseDouble(tmp);
-    tmp = properties.getProperty("bw");
-    if (tmp != null)
-      bw = Boolean.parseBoolean(tmp);
-    tmp = properties.getProperty("legend.enabled");
-    if (tmp != null)
-      legendEnabled = Boolean.parseBoolean(tmp);
-    tmp = properties.getProperty("legend.position");
-    if (tmp != null)
-      legendPosition = tmp;
-    else
-      legendPosition = "bottom";
-    tmp = properties.getProperty("axis.x");
-    if (tmp != null)
-      axis_x_type = tmp;
-    tmp = properties.getProperty("axis.y");
-    if (tmp != null)
-      axis_y_type = tmp;
-    tmp = properties.getProperty("notes");
+    title  = properties.assign("title", title);
+    xlabel = properties.assign("xlabel", xlabel);
+    ylabel = properties.assign("ylabel", ylabel);
+    width  = properties.assign("width", width);
+    height = properties.assign("height", height);
+    xmin   = properties.assign("xmin", xmin);
+    xmax   = properties.assign("xmax", xmax);
+    ymin   = properties.assign("ymin", ymin);
+    ymax   = properties.assign("ymax", ymax);
+
+    bw = properties.assign("bw", bw);
+    legendEnabled = properties.assign("legend.enabled", legendEnabled);
+    legendPosition = properties.assign("legend.position", legendPosition);
+
+    axis_x_type = properties.assign("axis.x", axis_x_type);
+    axis_y_type = properties.assign("axis.y", axis_y_type);
+
+    String tmp = properties.getProperty("notes");
     if (tmp != null)
       loadNotes();
   }

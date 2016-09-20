@@ -1,7 +1,6 @@
 
 package jwplot;
 
-import java.util.Properties;
 import java.util.List;
 
 /**
@@ -99,47 +98,5 @@ public class Util
   public static void verbose(boolean status)
   {
     v = status;
-  }
-  
-  public static int parsePropertyInt(String propName, String text)
-  throws UserInputException
-  {
-    try 
-    {
-      return Integer.parseInt(text);
-    }
-    catch (NumberFormatException e)
-    {
-      throw new UserInputException
-      ("Could not parse property as integer: " +
-       "\""+ propName +"\"=\"" +text+"\"");
-    }
-  }
-  
-  public static double parsePropertyDbl(String propName, String text)
-  throws UserInputException
-  {
-    try 
-    {
-      return Double.parseDouble(text);
-    }
-    catch (NumberFormatException e)
-    {
-      throw new UserInputException
-      ("Could not parse property as double: " +
-       "\""+ propName +"\"=\"" +text+"\"");
-    }
-  }
-  
-
-  
-  public static double assignProperty(Properties properties, 
-                                      String propName, 
-                                      double defaultValue)
-  throws UserInputException
-  {
-    String text = properties.getProperty(propName).trim();
-    if (text == null) return defaultValue;
-    return parsePropertyDbl(propName, text);
   }
 }
