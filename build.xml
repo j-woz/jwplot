@@ -1,6 +1,4 @@
 
-<!-- JWPlot -->
-
 <project name="jwplot"
 	 default="jar">
 

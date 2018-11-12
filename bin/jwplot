@@ -4,7 +4,6 @@
 
 zparseopts -D -E h=H
 
-# Respond to -h
 if (( ${#H} ))
 then
   print "usage:"
