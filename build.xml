@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<-- JWPlot -->
+<!-- JWPlot -->
 
 <project name="jwplot"
 	 default="jar">
