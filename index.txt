@@ -23,10 +23,10 @@ It should be easy to extend the plotter to use additional JFreeChart features.
 Just check out from GitHub, build with Ant, and run:
 
 ----
-git clone git@github.com:jmjwozniak/jwplot.git
-cd jwplot
-ant
-bin/jwplot ...
+$ git clone git@github.com:jmjwozniak/jwplot.git
+$ cd jwplot
+$ ant
+$ bin/jwplot ...
 ----
 
 == Usage
@@ -35,7 +35,7 @@ The plotter accepts a configuration file, a target output file name
 for the EPS, and a variable number of data files:
 
 ----
-jwplot -s my_output.eps my_config.cfg my_data.data
+$ jwplot -s my_output.eps my_config.cfg my_data.data
 ----
 
 == Configuration
@@ -139,8 +139,8 @@ images from them via
 http://www.imagemagick.org/script/convert.php[ImageMagick]:
 
 ----
-convert my_output.eps my_output.png
-convert my_output.eps my_output.pdf
+$ convert my_output.eps my_output.png
+$ convert my_output.eps my_output.pdf
 ----
 
 == Data
