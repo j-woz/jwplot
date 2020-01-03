@@ -90,10 +90,11 @@ If true, use black and white only.  Default: +false+.
 If true, show a legend.  Default: +true+.
 
 +axis.x,axis.y+::
-May be +normal+, +logarithmic+ (tends to use
-scientific notation in labels), +log+, or +date+.  For +date+, provide
-date data as decimal milliseconds since the Unix Epoch.  Default:
-+normal+.
+May be +normal+, +integer+,
++logarithmic+ (tends to use scientific notation in labels),
++log+, or +date+.  Default:+normal+.
++
+For +date+, provide date data as decimal milliseconds since the Unix Epoch.
 
 +label._filename_+::
 Set the legend label for the data series from
