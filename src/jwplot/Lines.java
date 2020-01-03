@@ -279,7 +279,7 @@ public class Lines
 
     // Actual values: modify if necessary
     double axmin, axmax, aymin, aymax;
-    if (xmin != null || xmax != null)
+    if (xmin != null || xmax != null || axis_x_type == "integer")
     {
       NumberAxis axis = (NumberAxis) plot.getDomainAxis();
       Range range = axis.getRange();
@@ -288,9 +288,11 @@ public class Lines
       if (xmin != null) axmin = xmin;
       if (xmax != null) axmax = xmax;
       axis.setRange(axmin, axmax);
+      if (axis_x_type == "integer")
+        axis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
     }
 
-    if (ymin != null || ymax != null)
+    if (ymin != null || ymax != null || axis_y_type == "integer")
     {
       ValueAxis axis = plot.getRangeAxis();
       Range range = axis.getRange();
@@ -299,6 +301,8 @@ public class Lines
       if (ymin != null) aymin = ymin;
       if (ymax != null) aymax = ymax;
       axis.setRange(aymin, aymax);
+      if (axis_y_type == "integer")
+        axis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
     }
     //  NumberAxis axis = (NumberAxis) plot.getRangeAxis();
     // axis.setTickUnit(new NumberTickUnit(1, new DecimalFormat("0"), 1));
@@ -323,7 +327,10 @@ public class Lines
       DateAxis domainAxis = new DateAxis();
       plot.setDomainAxis(domainAxis);
     }
-    else if (!axis_x_type.equals("normal"))
+    else if (axis_x_type.equals("normal") ||
+             axis_x_type.equals("integer"))
+    { /* OK */ }
+    else
       throw new UserInputException
       ("Invalid axis.x type: " + axis_x_type);
 
@@ -338,7 +345,10 @@ public class Lines
       ValueAxis rangeAxis = new LogAxis(ylabel);
       plot.setRangeAxis(rangeAxis);
     }
-    else if (!axis_y_type.equals("normal"))
+    else if (axis_y_type.equals("normal") ||
+             axis_y_type.equals("integer"))
+    { /* OK */ }
+    else
       throw new UserInputException
       ("Invalid axis.y type: " + axis_y_type);
   }
