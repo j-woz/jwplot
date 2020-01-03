@@ -45,7 +45,7 @@ formatted as a Java properties file.  Examples may be found
 in the +examples/+ directory.
 
 Java properties files have a +key=value+ format where comments are
-denoted with *#*.
+denoted *#* .
 
 For example, +plot.cfg+ contains:
 ----
