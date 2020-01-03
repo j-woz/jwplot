@@ -122,11 +122,12 @@ public class Lines
       catch (LineReaderException e)
       {
         throw new UserInputException
-        (e.getMessage() + "\n" + "In file: " + file);
+          (e.getMessage() + "\n" + "In file: " + file);
       }
 
       checkRead(name, array);
       data.add(array);
+      // System.out.println("name: " + name);
       addLabel(name, labels);
     }
   }
@@ -366,7 +367,8 @@ public class Lines
       legend.setBackgroundPaint(Color.WHITE);
       legend.setFrame(new BlockBorder(Color.BLACK));
       legend.setPosition(RectangleEdge.BOTTOM);
-      XYTitleAnnotation ta = new XYTitleAnnotation(0.10, 0.00001, legend, RectangleAnchor.BOTTOM_RIGHT);
+      XYTitleAnnotation ta =
+        new XYTitleAnnotation(0.10, 0.00001, legend, RectangleAnchor.BOTTOM_RIGHT);
       ta.setMaxWidth(0.48);
       plot.addAnnotation(ta);
       legendEnabled = false;
