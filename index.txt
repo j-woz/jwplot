@@ -69,24 +69,45 @@ label.set1.data = Set 1
 * Some properties are set on a per-data-file basis.  In this case, part of
   the key is the file name.
 
-+title+:: Set a plot title.
-+xlabel,ylabel+:: Set labels for the X and Y axes.
-+width,height+:: Set the width, height of the output EPS in pixels.
++title+::
+Set a plot title.
+
++xlabel,ylabel+::
+Set labels for the X and Y axes.
+
++width,height+::
+Set the width, height of the output EPS in pixels.
 Defaults to 400 by 400.
-+xmin,xmax,ymin,ymax+:: Set the visible region of the plot.
+
++xmin,xmax,ymin,ymax+::
+Set the visible region of the plot.
 Defaults to an auto-selection made by JFreeChart.
-+bw+:: If true, use black and white only.  Default: +false+.
-+legend.enabled+:: If true, show a legend.  Default: +true+.
-+axis.x,axis.y+:: May be +normal+, +logarithmic+ (tends to use
+
++bw+::
+If true, use black and white only.  Default: +false+.
+
++legend.enabled+::
+If true, show a legend.  Default: +true+.
+
++axis.x,axis.y+::
+May be +normal+, +logarithmic+ (tends to use
 scientific notation in labels), +log+, or +date+.  For +date+, provide
 date data as decimal milliseconds since the Unix Epoch.  Default:
 +normal+.
-+label._filename_+:: Set the legend label for the data series from
+
++label._filename_+::
+Set the legend label for the data series from
 file +_filename_+.
-+shape._filename_+:: If +none+, use no shape for the data series from
+
++shape._filename_+::
+If +none+, use no shape for the data series from
 file +_filename_+.
-+notes+:: The number of notes in the file, numbered starting from 0.
-+note._i_+:: The _x_, _y_, and text for note _i_.   The text is
+
++notes+::
+The number of notes in the file, numbered starting from 0.
+
++note._i_+::
+The _x_, _y_, and text for note _i_.   The text is
 centered on _x_, _y_ with respect to the plot.
 
 ////
