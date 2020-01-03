@@ -3,7 +3,13 @@
 Plotter based on JFreeChart for simple, general-purpose plotting from
 the shell
 
-* [User guide](https://jmjwozniak.github.io/jwplot)
+* [User guide](https://jmwozniak.github.io/jwplot)
+
+
+
+
+
+
 
 ## Example
 
@@ -41,7 +47,7 @@ And these data files:
 Run these command lines:
 
 ```
-$ jwplot jw.cfg jw.eps j.data w.data
+$ jwplot jw.eps jw.cfg j.data w.data
 $ convert jw.eps jw.png
 ```
 

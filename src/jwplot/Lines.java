@@ -64,7 +64,7 @@ public class Lines
       new ArrayList<XYTextAnnotation>();
 
   /**
-       @param files: properties_file output_file data_file*
+       @param files: output_file properties_file data_file*
        Reads settings from properties: see scanProperties()
        Produces EPS output file
        Data files are two-columns of numbers each -
@@ -76,8 +76,8 @@ public class Lines
     if (files.size() < 2)
       throw new UserInputException
         ("Insufficient command line arguments!");
-    String propFile = files.get(0);
-    String output = files.get(1);
+    String output   = files.get(0);
+    String propFile = files.get(1);
     List<String> names = new ArrayList<String>();
     for (int i = 2; i < files.size(); i++)
       names.add(files.get(i));

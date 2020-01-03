@@ -34,8 +34,10 @@ The plotter accepts a configuration file, a target output file name
 for the EPS, and a variable number of data files:
 
 ----
-jwplot -s my_config.cfg my_output.eps my_data.data
+jwplot -s my_output.eps my_config.cfg my_data.data
 ----
+
+(The output file is specified first for easier use with multiple data files in a Makefile.)
 
 == Configuration
 
