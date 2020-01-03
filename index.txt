@@ -162,7 +162,7 @@ Commas are also automatically stripped.
 
 The plotter accepts the following options on the command line.
 
-+-s+:: Use a single Y axis.
++-s+:: Use a single Y axis (the default).
 +-d+:: Use a double Y axis (dual mode).
 +-v+:: Turn on verbose output.
 
