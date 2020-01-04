@@ -8,7 +8,8 @@ then
   typeset -T CP cp ";"
   CYGWIN_NAME="cygwin"
   CYGPWD=$( cygpath --mixed ${JWPLOT_HOME} )
-  if [[ ${CYGPWD} =~ c:/cygwin64* ]]
+  if [[ ${CYGPWD} =~ c:/cygwin64* ]] || \
+     [[ ${CYGPWD} =~ C:/cygwin64* ]]
   then
     CYGWIN_NAME="cygwin64"
   fi
