@@ -279,7 +279,7 @@ public class Lines
 
     // Actual values: modify if necessary
     double axmin, axmax, aymin, aymax;
-    if (xmin != null || xmax != null || axis_x_type == "integer")
+    if (xmin != null || xmax != null || axis_x_type.equals("integer"))
     {
       NumberAxis axis = (NumberAxis) plot.getDomainAxis();
       Range range = axis.getRange();
@@ -288,11 +288,11 @@ public class Lines
       if (xmin != null) axmin = xmin;
       if (xmax != null) axmax = xmax;
       axis.setRange(axmin, axmax);
-      if (axis_x_type == "integer")
+      if (axis_x_type.equals("integer"))
         axis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
     }
 
-    if (ymin != null || ymax != null || axis_y_type == "integer")
+    if (ymin != null || ymax != null || axis_y_type.equals("integer"))
     {
       ValueAxis axis = plot.getRangeAxis();
       Range range = axis.getRange();
@@ -301,7 +301,7 @@ public class Lines
       if (ymin != null) aymin = ymin;
       if (ymax != null) aymax = ymax;
       axis.setRange(aymin, aymax);
-      if (axis_y_type == "integer")
+      if (axis_y_type.equals("integer"))
         axis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
     }
     //  NumberAxis axis = (NumberAxis) plot.getRangeAxis();
