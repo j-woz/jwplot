@@ -249,9 +249,10 @@ public class Lines
   {
     XYPlot plot = chart.getXYPlot();
     XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-    if (bw)
-      for (int i = 0; i < plot.getSeriesCount(); i++)
-        renderer.setSeriesPaint(i, Color.BLACK);
+    // if (bw)
+    // for (int i = 0; i < plot.getSeriesCount(); i++)
+      // renderer.setSeriesPaint(i, Color.BLACK);
+    renderer.setSeriesPaint(3, Color.ORANGE);
     for (int i = 0; i < plot.getSeriesCount(); i++)
     {
       Series series = collection.getSeries(i);
