@@ -5,4 +5,4 @@ set -e
 
 push ../.. ; ant ; pop
 
-../../bin/jwplot -v plot.cfg out.eps set1.data
+../../bin/jwplot -v out.eps plot.cfg set1.data
