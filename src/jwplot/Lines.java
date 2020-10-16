@@ -249,10 +249,9 @@ public class Lines
   {
     XYPlot plot = chart.getXYPlot();
     XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-    // if (bw)
-    // for (int i = 0; i < plot.getSeriesCount(); i++)
-      // renderer.setSeriesPaint(i, Color.BLACK);
-    renderer.setSeriesPaint(3, Color.ORANGE);
+    if (bw)
+      for (int i = 0; i < plot.getSeriesCount(); i++)
+        renderer.setSeriesPaint(i, Color.BLACK);
     for (int i = 0; i < plot.getSeriesCount(); i++)
     {
       Series series = collection.getSeries(i);
@@ -510,11 +509,75 @@ public class Lines
     new BasicStroke(2.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND,
                     1.0f, new float[] {6.0f, 6.0f}, 0.0f);
 
-  static void formatLine(String name, XYLineAndShapeRenderer renderer, int i)
+  static void formatLine(String name,
+                         XYLineAndShapeRenderer renderer, int index)
+  throws UserInputException
   {
     String lineStyle = properties.getProperty("line."+name);
     if ("dotted".equals(lineStyle))
-      renderer.setSeriesStroke(i, dottedStroke);
+      renderer.setSeriesStroke(index, dottedStroke);
+    String colorName = properties.getProperty("color."+name);
+    try
+    {
+      if (colorName != null)
+        renderer.setSeriesPaint(index, mapToColor(colorName));
+    }
+    catch (UserInputException e)
+    {
+      throw new UserInputException(e.toString() +
+                                   " for '" + name + "'");
+    }
+  }
+
+  static Color mapToColor(String colorName)
+  throws UserInputException
+  {
+    Color color;
+    switch (colorName.toLowerCase())
+    {
+      case "black":
+        color = Color.BLACK;
+        break;
+      case "blue":
+        color = Color.BLUE;
+        break;
+      case "cyan":
+        color = Color.CYAN;
+        break;
+      case "darkgray":
+        color = Color.DARK_GRAY;
+        break;
+      case "gray":
+        color = Color.GRAY;
+        break;
+      case "green":
+        color = Color.GREEN;
+        break;
+      case "yellow":
+        color = Color.YELLOW;
+        break;
+      case "lightgray":
+        color = Color.LIGHT_GRAY;
+        break;
+      case "magneta":
+        color = Color.MAGENTA;
+        break;
+      case "orange":
+        color = Color.ORANGE;
+        break;
+      case "pink":
+        color = Color.PINK;
+        break;
+      case "red":
+        color = Color.RED;
+        break;
+      case "white":
+        color = Color.WHITE;
+        break;
+      default:
+        throw new UserInputException("unknown color: " + colorName);
+    }
+    return color;
   }
 
   static void drawGraphics(Graphics2D g2d)
