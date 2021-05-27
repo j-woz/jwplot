@@ -10,6 +10,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Collections;
+import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.xmlgraphics.java2d.GraphicContext;
@@ -516,7 +518,7 @@ public class Lines
     String lineStyle = properties.getProperty("line."+name);
     if ("dotted".equals(lineStyle))
       renderer.setSeriesStroke(index, dottedStroke);
-    String colorName = properties.getProperty("color."+name);
+    String colorName = propertiesMatch("color."+name);
     try
     {
       if (colorName != null)
@@ -527,6 +529,41 @@ public class Lines
       throw new UserInputException(e.toString() +
                                    " for '" + name + "'");
     }
+  }
+
+  static String propertiesMatch(String name)
+  {
+    for (Object k : Collections.list(properties.keys()))
+    {
+      String key = (String) k;
+      String pattern = createRegexFromGlob(key);
+      // System.out.println(pattern);
+      if (Pattern.matches(pattern, name))
+      {
+        // System.out.println("\t match");
+        return (String) properties.get(key);
+      }
+    }
+    return null;
+  }
+
+  // https://stackoverflow.com/questions/1247772/is-there-an-equivalent-of-java-util-regex-for-glob-type-patterns
+  public static String createRegexFromGlob(String glob)
+  {
+    StringBuilder result = new StringBuilder();
+    for(int i = 0; i < glob.length(); i++)
+    {
+      final char c = glob.charAt(i);
+      switch(c)
+      {
+        case '*':  result.append(".*"); break;
+        case '?':  result.append('.');   break;
+        case '.':  result.append("\\."); break;
+        case '\\': result.append("\\\\"); break;
+        default: result.append(c);
+      }
+    }
+    return result.toString();
   }
 
   static Color mapToColor(String colorName)
@@ -559,7 +596,7 @@ public class Lines
       case "lightgray":
         color = Color.LIGHT_GRAY;
         break;
-      case "magneta":
+      case "magenta":
         color = Color.MAGENTA;
         break;
       case "orange":
