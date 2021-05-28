@@ -7,7 +7,7 @@ zparseopts -D -E h=H
 if (( ${#H} ))
 then
   print "usage:"
-  print "\t jwplot <OPTIONS>* <CFG> <EPS> <DATA>*"
+  print "\t jwplot <OPTIONS>* <EPS> <CFG> <DATA>*"
   return
 fi
 
