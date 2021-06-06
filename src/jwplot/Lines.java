@@ -320,8 +320,6 @@ public class Lines
       ValueAxis axis_x = plot.getDomainAxis();
       ValueAxis axis_y = plot.getRangeAxis();
       axis_x.setTickLabelFont(font);
-
-      System.out.println("axis_label: " + axis_label_font_size);
       axis_y.setTickLabelFont(font);
     }
     if (axis_tick_font_size != 0)
@@ -329,7 +327,6 @@ public class Lines
       Font font = new Font("Dialog",  Font.BOLD, axis_tick_font_size);
       ValueAxis axis_x = plot.getDomainAxis();
       ValueAxis axis_y = plot.getRangeAxis();
-      System.out.println("axis_tick: " + axis_tick_font_size);
       axis_x.setLabelFont(font);
       axis_y.setLabelFont(font);
     }
