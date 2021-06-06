@@ -28,7 +28,7 @@ import org.jfree.data.xy.XYSeriesCollection;
  * */
 public class Dual
 {
-  static Properties properties;
+  static CheckedProperties properties;
 
   static String title = null;
   static String xlabel = "x";
@@ -79,7 +79,7 @@ public class Dual
     List<double[][]> data = new ArrayList<double[][]>();
     List<String> labels = new ArrayList<String>();
 
-    properties = new Properties();
+    properties = new CheckedProperties();
     load(propFile);
     title = properties.getProperty("title");
     xlabel = properties.getProperty("xlabel");
@@ -131,11 +131,13 @@ public class Dual
        @param ylabel2 Y label text
        @param output EPS filename
        @return true/false depending if the method completed without error or not
+   * @throws UserInputException
    */
   public static boolean plot(XYSeriesCollection[] collections,
                              String title, String xlabel,
                              String ylabel1, String ylabel2,
                              String output)
+  throws UserInputException
   {
     EPSDocumentGraphics2D g2d = null;
     Rectangle2D.Double rectangle = null;
@@ -188,6 +190,7 @@ public class Dual
   private static void setupPlot(JFreeChart chart,
                                 XYSeriesCollection[] collections,
                                 String ylabel1, String ylabel2)
+  throws UserInputException
   {
     XYPlot plot = chart.getXYPlot();
     XYLineAndShapeRenderer renderer1 = new XYLineAndShapeRenderer();

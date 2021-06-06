@@ -47,8 +47,13 @@ public class Lines
   /** If true, use only black and white */
   public static boolean bw = false;
 
-  static String axis_x_type = "normal";
-  static String axis_y_type = "normal";
+  static String axis_type_x = "normal";
+  static String axis_type_y = "normal";
+
+  /** Font size for axes labels.  If 0, use default */
+  static int axis_label_font_size = 0;
+  /** Font size for axes tick labels.  If 0, use default */
+  static int axis_tick_font_size = 0;
 
   static int width = 400;
   static int height = 400;
@@ -281,7 +286,7 @@ public class Lines
 
     // Actual values: modify if necessary
     double axmin, axmax, aymin, aymax;
-    if (xmin != null || xmax != null || axis_x_type.equals("integer"))
+    if (xmin != null || xmax != null || axis_type_x.equals("integer"))
     {
       NumberAxis axis = (NumberAxis) plot.getDomainAxis();
       Range range = axis.getRange();
@@ -290,11 +295,11 @@ public class Lines
       if (xmin != null) axmin = xmin;
       if (xmax != null) axmax = xmax;
       axis.setRange(axmin, axmax);
-      if (axis_x_type.equals("integer"))
+      if (axis_type_x.equals("integer"))
         axis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
     }
 
-    if (ymin != null || ymax != null || axis_y_type.equals("integer"))
+    if (ymin != null || ymax != null || axis_type_y.equals("integer"))
     {
       ValueAxis axis = plot.getRangeAxis();
       Range range = axis.getRange();
@@ -303,56 +308,86 @@ public class Lines
       if (ymin != null) aymin = ymin;
       if (ymax != null) aymax = ymax;
       axis.setRange(aymin, aymax);
-      if (axis_y_type.equals("integer"))
+      if (axis_type_y.equals("integer"))
         axis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
     }
     //  NumberAxis axis = (NumberAxis) plot.getRangeAxis();
     // axis.setTickUnit(new NumberTickUnit(1, new DecimalFormat("0"), 1));
-  }
 
+    if (axis_label_font_size != 0)
+    {
+      Font font = new Font("Dialog",  Font.PLAIN, axis_label_font_size);
+      ValueAxis axis_x = plot.getDomainAxis();
+      ValueAxis axis_y = plot.getRangeAxis();
+      axis_x.setTickLabelFont(font);
+
+      System.out.println("axis_label: " + axis_label_font_size);
+      axis_y.setTickLabelFont(font);
+    }
+    if (axis_tick_font_size != 0)
+    {
+      Font font = new Font("Dialog",  Font.BOLD, axis_tick_font_size);
+      ValueAxis axis_x = plot.getDomainAxis();
+      ValueAxis axis_y = plot.getRangeAxis();
+      System.out.println("axis_tick: " + axis_tick_font_size);
+      axis_x.setLabelFont(font);
+      axis_y.setLabelFont(font);
+    }
+    /*
+    Font fontPlain = new Font("Dialog", Font.PLAIN, 28);
+    Font fontBold = new Font("Dialog",  Font.BOLD,  24);
+    ValueAxis axis_y = (ValueAxis) plot.getRangeAxis();
+    axis_y.setTickLabelFont(fontPlain);
+    axis_y.setLabelFont(fontBold);
+    ValueAxis axis_x = (ValueAxis) plot.getDomainAxis();
+    axis_x.setTickLabelFont(fontPlain);
+    axis_x.setLabelFont(fontBold);
+     */
+  }
 
   private static void setAxisTypes(XYPlot plot)
   throws UserInputException
   {
-    if (axis_x_type.equals("logarithmic"))
+    if (axis_type_x.equals("logarithmic"))
     {
       ValueAxis domainAxis = new LogarithmicAxis(xlabel);
       plot.setDomainAxis(domainAxis);
     }
-    else if (axis_x_type.equals("log"))
+    else if (axis_type_x.equals("log"))
     {
       ValueAxis domainAxis = new LogAxis(xlabel);
       plot.setDomainAxis(domainAxis);
     }
-    else if (axis_x_type.equals("date"))
+    else if (axis_type_x.equals("date"))
     {
       DateAxis domainAxis = new DateAxis();
       plot.setDomainAxis(domainAxis);
     }
-    else if (axis_x_type.equals("normal") ||
-             axis_x_type.equals("integer"))
-    { /* OK */ }
+    else if (axis_type_x.equals("normal") ||
+             axis_type_x.equals("integer"))
+    { /* OK */
+    }
     else
       throw new UserInputException
-      ("Invalid axis.x type: " + axis_x_type);
+      ("Invalid axis.x type: " + axis_type_x);
 
-    if (axis_y_type.equals("logarithmic"))
+    if (axis_type_y.equals("logarithmic"))
     {
       //
       ValueAxis rangeAxis = new LogarithmicAxis(ylabel);
       plot.setRangeAxis(rangeAxis);
     }
-    else if (axis_y_type.equals("log"))
+    else if (axis_type_y.equals("log"))
     {
       ValueAxis rangeAxis = new LogAxis(ylabel);
       plot.setRangeAxis(rangeAxis);
     }
-    else if (axis_y_type.equals("normal") ||
-             axis_y_type.equals("integer"))
+    else if (axis_type_y.equals("normal") ||
+             axis_type_y.equals("integer"))
     { /* OK */ }
     else
       throw new UserInputException
-      ("Invalid axis.y type: " + axis_y_type);
+      ("Invalid axis.y type: " + axis_type_y);
   }
 
   static void placeLegend(JFreeChart chart)
@@ -364,6 +399,9 @@ public class Lines
     // http://stackoverflow.com/questions/11320360/embed-the-legend-into-the-plot-area-of-jfreechart
     LegendTitle legend = new LegendTitle(plot);
     // LegendTitle legend = chart.getLegend();
+
+
+    // legend.setItemFont(new Font("Dialog", Font.PLAIN, 24));
 
     if (legendPosition.equals("right"))
       legend.setPosition(RectangleEdge.RIGHT);
@@ -429,8 +467,10 @@ public class Lines
     legendEnabled  = properties.assign("legend.enabled",  legendEnabled);
     legendPosition = properties.assign("legend.position", legendPosition);
 
-    axis_x_type = properties.assign("axis.x", axis_x_type);
-    axis_y_type = properties.assign("axis.y", axis_y_type);
+    axis_type_x = properties.assign("axis.type.x",    axis_type_x);
+    axis_type_y = properties.assign("axis.type.y",    axis_type_y);
+    axis_label_font_size = properties.assign("axis.label.font.size", axis_label_font_size);
+    axis_tick_font_size  = properties.assign("axis.tick.font.size",  axis_tick_font_size);
 
     if (properties.getProperty("notes") != null)
       loadNotes();

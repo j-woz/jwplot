@@ -3,7 +3,6 @@ package jwplot;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.Properties;
 
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.title.LegendTitle;
@@ -16,22 +15,22 @@ import org.jfree.chart.title.LegendTitle;
 public class Plots
 {
   static void setupLegend(JFreeChart chart,
-                          Properties properties)
+                          CheckedProperties properties)
+  throws UserInputException
   {
     LegendTitle legend = chart.getLegend();
+    if (legend == null) return;
     Font font = getLegendFont(properties);
-    if (font != null)
-      legend.setItemFont(font);
+    if (font == null) return;
+    legend.setItemFont(font);
   }
 
-  static Font getLegendFont(Properties properties)
+  static Font getLegendFont(CheckedProperties properties)
+  throws UserInputException
   {
-    Font result = null;
-    String name = properties.getProperty("legend.font");
-    if (name == null)
-      return null;
-    result = new Font(name, Font.PLAIN, 12);
-    return result;
+    int i = properties.assign("legend.font.size", 0);
+    if (i == 0) return null;
+    return new Font("Dialog", Font.PLAIN, i);
   }
 
   static Color string2color(String s)

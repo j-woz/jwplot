@@ -24,7 +24,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  * */
 public class Bars
 {
-  static Properties properties;
+  static CheckedProperties properties;
 
   static String title = null;
   static String xlabel = "x";
@@ -70,11 +70,11 @@ public class Bars
     List<String> names = new ArrayList<String>();
     for (int i = 2; i < files.size(); i++)
       names.add(files.get(i));
-    
+
     List<double[][]> data = new ArrayList<double[][]>();
     List<String> labels = new ArrayList<String>();
 
-    properties = new Properties();
+    properties = new CheckedProperties();
     load(propFile);
 
     scanProperties();
@@ -135,10 +135,12 @@ public class Bars
        @param ylabel Y label text.
        @param output EPS filename.
        @return true/false depending if the method completed without error or not
+   * @throws UserInputException
    */
   public static boolean plot(CategoryDataset dataset,
                              String title, String xlabel,
                              String ylabel, String output)
+  throws UserInputException
   {
     EPSDocumentGraphics2D g2d = null;
     Rectangle2D.Double rectangle = null;
@@ -189,6 +191,7 @@ public class Bars
 
   private static void setupPlot(JFreeChart chart,
                                 CategoryDataset collection)
+  throws UserInputException
   {
     CategoryPlot plot = chart.getCategoryPlot();
     Plots.setupLegend(chart, properties);
