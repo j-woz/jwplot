@@ -54,6 +54,8 @@ public class Lines
   static int axis_label_font_size = 0;
   /** Font size for axes tick labels.  If 0, use default */
   static int axis_tick_font_size = 0;
+  /** Font size for legend labels.  If 0, use default */
+  static int legend_font_size = 0;
 
   static int width = 400;
   static int height = 400;
@@ -394,11 +396,16 @@ public class Lines
 
     XYPlot plot = chart.getXYPlot();
     // http://stackoverflow.com/questions/11320360/embed-the-legend-into-the-plot-area-of-jfreechart
-    LegendTitle legend = new LegendTitle(plot);
-    // LegendTitle legend = chart.getLegend();
+    // LegendTitle legend = new LegendTitle(plot);
+    LegendTitle legend = chart.getLegend();
 
-
-    // legend.setItemFont(new Font("Dialog", Font.PLAIN, 24));
+    if (legend == null)
+      return;
+    if (legend_font_size != 0)
+    {
+      Font font = new Font("Dialog", Font.PLAIN, legend_font_size);
+      legend.setItemFont(font);
+    }
 
     if (legendPosition.equals("right"))
       legend.setPosition(RectangleEdge.RIGHT);
@@ -468,6 +475,7 @@ public class Lines
     axis_type_y = properties.assign("axis.type.y",    axis_type_y);
     axis_label_font_size = properties.assign("axis.label.font.size", axis_label_font_size);
     axis_tick_font_size  = properties.assign("axis.tick.font.size",  axis_tick_font_size);
+    legend_font_size = properties.assign("legend.font.size", legend_font_size);
 
     if (properties.getProperty("notes") != null)
       loadNotes();
