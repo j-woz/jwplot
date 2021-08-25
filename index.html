@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-<meta name="generator" content="AsciiDoc 8.6.10" />
+<meta name="generator" content="AsciiDoc 9.0.0rc1" />
 <title>JWPlot</title>
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
@@ -436,7 +436,7 @@ thead, p.table.header {
 p.table {
   margin-top: 0;
 }
-/* Because the table frame attribute is overriden by CSS in most browsers. */
+/* Because the table frame attribute is overridden by CSS in most browsers. */
 div.tableblock > table[frame="void"] {
   border-style: none;
 }
@@ -784,7 +784,7 @@ $ bin/jwplot ...</code></pre>
 for the EPS, and a variable number of data files:</p></div>
 <div class="listingblock">
 <div class="content">
-<pre><code>$ jwplot -s my_output.eps my_config.cfg my_data.data</code></pre>
+<pre><code>$ jwplot my_output.eps my_config.cfg my_data.data</code></pre>
 </div></div>
 </div>
 </div>
@@ -865,11 +865,30 @@ Defaults to an auto-selection made by JFreeChart.
 </p>
 </dd>
 <dt class="hdlist1">
-<code>bw</code>
+<code>axis.x,axis.y</code>
 </dt>
 <dd>
 <p>
-If true, use black and white only.  Default: <code>false</code>.
+May be <code>normal</code>, <code>integer</code>,
+<code>logarithmic</code> (tends to use scientific notation in labels),
+<code>log</code>, or <code>date</code>.  Default: <code>normal</code>.
+</p>
+<div class="paragraph"><p>For <code>date</code>, provide date data as decimal milliseconds since the Unix Epoch.</p></div>
+</dd>
+<dt class="hdlist1">
+<code>axis.tick.font.size</code>
+</dt>
+<dd>
+<p>
+If set, the font size for the axis tick numbers.  Default: <code>JWPlot selection</code>
+</p>
+</dd>
+<dt class="hdlist1">
+<code>axis.label.font.size</code>
+</dt>
+<dd>
+<p>
+If set, the font size for the axis labels.  Default: <code>JWPlot selection</code>
 </p>
 </dd>
 <dt class="hdlist1">
@@ -881,15 +900,12 @@ If true, show a legend.  Default: <code>true</code>.
 </p>
 </dd>
 <dt class="hdlist1">
-<code>axis.x,axis.y</code>
+<code>legend.font.size</code>
 </dt>
 <dd>
 <p>
-May be <code>normal</code>, <code>integer</code>,
-<code>logarithmic</code> (tends to use scientific notation in labels),
-<code>log</code>, or <code>date</code>.  Default: <code>normal</code>.
+If set, the font size for the legend.  Default: <code>JWPlot selection</code>
 </p>
-<div class="paragraph"><p>For <code>date</code>, provide date data as decimal milliseconds since the Unix Epoch.</p></div>
 </dd>
 <dt class="hdlist1">
 <code>label.<em>filename</em></code>
@@ -907,6 +923,14 @@ file <code><em>filename</em></code>.
 <p>
 If <code>none</code>, use no shape for the data series from
 file <code><em>filename</em></code>.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>bw</code>
+</dt>
+<dd>
+<p>
+If true, use black and white only.  Default: <code>false</code>.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -1054,7 +1078,7 @@ The first data series will be plotted with respect to a left-hand
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2020-01-03 13:21:20 CST
+ 2021-08-25 18:13:21 CDT
 </div>
 </div>
 </body>
