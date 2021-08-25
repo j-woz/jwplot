@@ -468,14 +468,18 @@ public class Lines
     ymax   = properties.assign("ymax",   ymax);
 
     bw = properties.assign("bw", bw);
-    legendEnabled  = properties.assign("legend.enabled",  legendEnabled);
-    legendPosition = properties.assign("legend.position", legendPosition);
-
+    legendEnabled  = properties.assign("legend.enabled",
+                                       legendEnabled);
+    legendPosition = properties.assign("legend.position",
+                                       legendPosition);
     axis_type_x = properties.assign("axis.type.x",    axis_type_x);
     axis_type_y = properties.assign("axis.type.y",    axis_type_y);
-    axis_label_font_size = properties.assign("axis.label.font.size", axis_label_font_size);
-    axis_tick_font_size  = properties.assign("axis.tick.font.size",  axis_tick_font_size);
-    legend_font_size = properties.assign("legend.font.size", legend_font_size);
+    axis_label_font_size = properties.assign("axis.label.font.size",
+                                             axis_label_font_size);
+    axis_tick_font_size  = properties.assign("axis.tick.font.size",
+                                             axis_tick_font_size);
+    legend_font_size = properties.assign("legend.font.size",
+                                         legend_font_size);
 
     if (properties.getProperty("notes") != null)
       loadNotes();
