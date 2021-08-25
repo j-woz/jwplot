@@ -91,16 +91,16 @@ May be +normal+, +integer+,
 For +date+, provide date data as decimal milliseconds since the Unix Epoch.
 
 +axis.tick.font.size+::
-If set, the font size for the axis tick numbers.  Default: +JWPlot selection+
+If set, the font size for the axis tick numbers.  Default: _JWPlot selection_
 
 +axis.label.font.size+::
-If set, the font size for the axis labels.  Default: +JWPlot selection+
+If set, the font size for the axis labels.  Default: _JWPlot selection_
 
 +legend.enabled+::
 If true, show a legend.  Default: +true+.
 
 +legend.font.size+::
-If set, the font size for the legend.  Default: +JWPlot selection+
+If set, the font size for the legend.  Default: _JWPlot selection_
 
 +label._filename_+::
 Set the legend label for the data series from
