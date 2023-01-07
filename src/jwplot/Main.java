@@ -43,7 +43,7 @@ public class Main
     }
     catch (UserInputException e)
     {
-      System.out.println("input error: ");
+      System.out.println("jwplot: input error: ");
       System.out.println(e.getMessage());
       // e.printStackTrace();
       System.exit(1);

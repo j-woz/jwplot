@@ -32,6 +32,7 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.RectangleAnchor;
 import org.jfree.ui.RectangleEdge;
+import org.jfree.util.ShapeUtilities;
 
 /**
  * See main() for command-line arguments
@@ -255,6 +256,7 @@ public class Lines
   throws UserInputException
   {
     XYPlot plot = chart.getXYPlot();
+
     XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
     if (bw)
       for (int i = 0; i < plot.getSeriesCount(); i++)
@@ -267,6 +269,10 @@ public class Lines
         renderer.setSeriesShapesVisible(i, false);
       if (! showLine(description))
         renderer.setSeriesLinesVisible(i, false);
+      Color color = lineColor(description);
+      if (color != null)
+        renderer.setSeriesPaint(i, color);
+      renderer.setSeriesShape(0, ShapeUtilities.createRegularCross(2,2));
       formatLine(description, renderer, i);
     }
 
@@ -466,14 +472,17 @@ public class Lines
 
     axis_type_x = properties.assign("axis.type.x",    axis_type_x);
     axis_type_y = properties.assign("axis.type.y",    axis_type_y);
-    axis_label_font_size = properties.assign("axis.label.font.size", axis_label_font_size);
-    axis_tick_font_size  = properties.assign("axis.tick.font.size",  axis_tick_font_size);
+    axis_label_font_size = properties.assign("axis.label.font.size",
+                                             axis_label_font_size);
+    axis_tick_font_size  = properties.assign("axis.tick.font.size",
+                                             axis_tick_font_size);
 
     if (properties.getProperty("notes") != null)
       loadNotes();
   }
 
   static void loadNotes()
+  throws UserInputException
   {
     String s = properties.getProperty("notes");
     int count = Integer.parseInt(s);
@@ -481,11 +490,18 @@ public class Lines
     {
       String p = "note."+i;
       String d = properties.getProperty(p);
-      String[] tokens = d.split("\\s");
+      if (d == null)
+        throw new UserInputException
+          ("Could not find note." + i + " (notes=" + count + ")");
+      String[] tokens = d.split("\\s+");
       double x = Double.parseDouble(tokens[0]);
       double y = Double.parseDouble(tokens[1]);
       String text = Util.concat(tokens, 2);
+      // System.out.println("note: " + x + " " + y + " '" + text + "'");
       XYTextAnnotation note = new XYTextAnnotation(text, x, y);
+      Font font1 = note.getFont();
+      Font font2 = font1.deriveFont(12.0f);
+      note.setFont(font2);
       notes.add(note);
     }
   }
@@ -542,6 +558,20 @@ public class Lines
     if ("none".equals(mode))
       return false;
     return true;
+  }
+
+  static Color lineColor(String name)
+  throws UserInputException
+  {
+    String s;
+    s = properties.getProperty("color."+name);
+    if (s != null)
+      return mapToColor(s);
+    // System.out.println(s);
+    s = properties.getProperty("color.all");
+    if (s != null)
+      return mapToColor(s);
+    return null;
   }
 
   static BasicStroke dottedStroke =
