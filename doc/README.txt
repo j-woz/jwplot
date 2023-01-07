@@ -34,7 +34,7 @@ The plotter accepts a configuration file, a target output file name
 for the EPS, and a variable number of data files:
 
 ----
-jwplot -s my_output.eps my_config.cfg my_data.data
+jwplot my_output.eps my_config.cfg my_data.data
 ----
 
 (The output file is specified first for easier use with multiple data files in a Makefile.)
@@ -78,10 +78,13 @@ Defaults to 400 by 400.
 Defaults to an auto-selection made by JFreeChart.
 +bw+:: If true, use black and white only.  Default: +false+.
 +legend.enabled+:: If true, show a legend.  Default: +true+.
++legend.font.size+:: If set, the font size for the legend.  Default: +JWPlot selection+
 +axis.x,axis.y+:: May be +normal+, +logarithmic+ (tends to use
 scientific notation in labels), +log+, or +date+.  For +date+, provide
 date data as decimal milliseconds since the Unix Epoch.  Default:
 +normal+.
++axis.tick.font.size+:: If set, the font size for the axis tick numbers.  Default: +JWPlot selection+
++axis.label.font.size+:: If set, the font size for the axis labels.  Default: +JWPlot selection+
 +label._filename_+:: Set the legend label for the data series from
 file +_filename_+.
 +shape._filename_+:: If +none+, use no shape for the data series from

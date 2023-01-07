@@ -3,13 +3,7 @@
 Plotter based on JFreeChart for simple, general-purpose plotting from
 the shell
 
-* [User guide](https://jmjwozniak.github.io/jwplot)
-
-
-
-
-
-
+* [User guide](https://j-woz.github.io/jwplot)
 
 ## Example
 
