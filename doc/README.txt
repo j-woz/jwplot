@@ -163,3 +163,9 @@ same plot, with separate X axes.
 == Issues, suggestions, and feature requests
 
 Please use the JWPlot issue tracker: https://sourceforge.net/p/jwplot/tickets
+
+////
+Local Variables:
+mode: doc
+End:
+////
