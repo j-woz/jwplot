@@ -79,10 +79,12 @@ Defaults to an auto-selection made by JFreeChart.
 +bw+:: If true, use black and white only.  Default: +false+.
 +legend.enabled+:: If true, show a legend.  Default: +true+.
 +legend.font.size+:: If set, the font size for the legend.  Default: +JWPlot selection+
-+axis.x,axis.y+:: May be +normal+, +logarithmic+ (tends to use
-scientific notation in labels), +log+, or +date+.  For +date+, provide
-date data as decimal milliseconds since the Unix Epoch.  Default:
-+normal+.
+
++axis.x,axis.y+::
+May be +normal+, +logarithmic+ (tends to use scientific notation in labels), +log+, or +date+.
+For +date+, provide date data as decimal milliseconds since the Unix Epoch.  (Milliseconds are required by JFreeChart.)
+Default: +normal+.
+
 +axis.tick.font.size+:: If set, the font size for the axis tick numbers.  Default: +JWPlot selection+
 +axis.label.font.size+:: If set, the font size for the axis labels.  Default: +JWPlot selection+
 +label._filename_+:: Set the legend label for the data series from
