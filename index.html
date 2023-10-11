@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-<meta name="generator" content="AsciiDoc 9.0.0rc1" />
+<meta name="generator" content="AsciiDoc 10.2.0" />
 <title>JWPlot</title>
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
@@ -865,7 +865,7 @@ Defaults to an auto-selection made by JFreeChart.
 </p>
 </dd>
 <dt class="hdlist1">
-<code>axis.x,axis.y</code>
+<code>axis.type.x,axis.type.y</code>
 </dt>
 <dd>
 <p>
@@ -873,7 +873,8 @@ May be <code>normal</code>, <code>integer</code>,
 <code>logarithmic</code> (tends to use scientific notation in labels),
 <code>log</code>, or <code>date</code>.  Default: <code>normal</code>.
 </p>
-<div class="paragraph"><p>For <code>date</code>, provide date data as decimal milliseconds since the Unix Epoch.</p></div>
+<div class="paragraph"><p>For <code>date</code>, provide date data as decimal milliseconds since the Unix Epoch.
+(Milliseconds are required by JFreeChart.)</p></div>
 </dd>
 <dt class="hdlist1">
 <code>axis.tick.font.size</code>
@@ -1078,7 +1079,7 @@ The first data series will be plotted with respect to a left-hand
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2021-08-25 18:18:45 CDT
+ 2023-10-11 02:02:22 CDT
 </div>
 </div>
 </body>
