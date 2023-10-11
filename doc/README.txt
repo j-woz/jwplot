@@ -80,7 +80,7 @@ Defaults to an auto-selection made by JFreeChart.
 +legend.enabled+:: If true, show a legend.  Default: +true+.
 +legend.font.size+:: If set, the font size for the legend.  Default: +JWPlot selection+
 
-+axis.x,axis.y+::
++axis.type.x,axis.type.y+::
 May be +normal+, +logarithmic+ (tends to use scientific notation in labels), +log+, or +date+.
 For +date+, provide date data as decimal milliseconds since the Unix Epoch.  (Milliseconds are required by JFreeChart.)
 Default: +normal+.
