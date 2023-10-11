@@ -83,12 +83,13 @@ Defaults to 400 by 400.
 Set the visible region of the plot.
 Defaults to an auto-selection made by JFreeChart.
 
-+axis.x,axis.y+::
++axis.type.x,axis.type.y+::
 May be +normal+, +integer+,
 +logarithmic+ (tends to use scientific notation in labels),
 +log+, or +date+.  Default: +normal+.
 +
 For +date+, provide date data as decimal milliseconds since the Unix Epoch.
+(Milliseconds are required by JFreeChart.)
 
 +axis.tick.font.size+::
 If set, the font size for the axis tick numbers.  Default: _JWPlot selection_
