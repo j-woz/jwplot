@@ -61,7 +61,6 @@ public class Bars
   {
     Bars.verbose = verbose;
 
-    Bits.init();
     Util.verbose(verbose);
 
     String propFile = files.get(0);
