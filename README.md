@@ -5,13 +5,19 @@ the shell
 
 * [User guide](https://j-woz.github.io/jwplot)
 
+
+
+
+
+
+
 ## Example
 
 Consider this JWPlot configuration file (Java properties format):
 
 *examples/lines/jw.cfg*
 ```
-title = JWPlot
+title  = JWPlot
 xlabel = ecks
 ylabel = why
 
