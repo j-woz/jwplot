@@ -235,7 +235,7 @@ public class Lines
       try
       {
         String s = labels.get(count);
-        if( !(s.equals("")) )
+        if(!(s.equals("")))
           label = s;
       }
       catch (IndexOutOfBoundsException e)
@@ -540,9 +540,9 @@ public class Lines
 
   static void addLabel(String name, List<String> labels)
   {
+    name = name.replaceAll(":", "_");
     String label = properties.getProperty("label."+name);
-    if (label == null)
-      label = "";
+    if (label == null) label = "";
     labels.add(label);
   }
 
