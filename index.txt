@@ -106,6 +106,9 @@ If set, the font size for the legend.  Default: _JWPlot selection_
 +label._filename_+::
 Set the legend label for the data series from
 file +_filename_+.
+Note that if the filename contains a colon,
+this is substituted with an underscore for matching,
+because colons interfere with the Java Properties file format.
 
 +shape._filename_+::
 If +none+, use no shape for the data series from
