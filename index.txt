@@ -62,7 +62,7 @@ label.set1.data = Set 1
 === Configuration properties
 
 * Numbers may be formatted in obvious ways.
-  Commas are automatically removed from numbers!
+  Commas signs are automatically removed from numbers!
   (Cf. Java +Double.parseDouble()+.)
 * True/false may be +true+ or +false+.
   (Cf. Java +Boolean.parseBoolean()+.)
@@ -161,15 +161,15 @@ $ convert my_output.eps my_output.pdf
 The data input is two columns of plain text numbers:
 
 ----
-1.965 1.5
+1.965 1.5%
 
 8 0
 # This is a comment
 1 7,000,000.1 # This is also a comment
 ----
 
-As shown, empty lines and +#+ comments are accepted.
-Commas are also automatically stripped.
+As shown, empty lines and comments (+#+) are accepted.
+Commas and percent signs (+%+) are also automatically stripped.
 
 == Plotter options
 
