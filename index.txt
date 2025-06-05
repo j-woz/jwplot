@@ -168,8 +168,8 @@ The data input is two columns of plain text numbers:
 1 7,000,000.1 # This is also a comment
 ----
 
-As shown, empty lines and comments (+#+) are accepted.
-Commas and percent signs (+%+) are also automatically stripped.
+As shown, empty lines and comments (+#+) are accepted. +
+Commas (+,+) and percent signs (+%+) are also automatically stripped.
 
 == Plotter options
 
