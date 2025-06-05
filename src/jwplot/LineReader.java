@@ -40,7 +40,7 @@ public class LineReader
       {
         int hash = line.indexOf("#");
         if (hash >= 0)
-          line = line.substring(0,hash);
+          line = line.substring(0, hash);
         line = spaces(line);
         line = (prevline + " " + line).trim();
         if (line.endsWith("\\"))
