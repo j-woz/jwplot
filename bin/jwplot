@@ -17,7 +17,7 @@ JWPLOT_HOME=$( cd ${JWPLOT_BIN}/.. ; /bin/pwd )
 
 # Set up CLASSPATH
 source ${JWPLOT_HOME}/scripts/classpath.zsh
-if [[ $? != 0 ]]
+if (( ${?} != 0 ))
 then
   print "Could not build CLASSPATH!"
   return 1
